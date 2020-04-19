@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<!--Cái này cho IE khỏi hiện block content vì nó nghĩ đây là web đã lưu -->
+<html>
+
+<head>
+  <!-- Use lastest version of Internet Explorer -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="utf-8">
+  <title>HC-Test-Editor</title>
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.0/standard-all/ckeditor.js"></script>
+  <script src="https://cdn.ckeditor.com/4.14.0/standard-all/adapters/jquery.js"></script>
+  <style>
+    body {
+      height: 100%;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <textarea id="txtEdit"></textarea>
+  <textarea id="txtHTML" style="visibility: hidden; display: none;"></textarea>
+  <script src="Scripts/editor.js"></script>
+  <script>
+    var textEditor = $('#txtEdit').ckeditor(function () { }, options).editor;
+    textEditor.on('change', function () {
+      $("#txtHTML").html(GetContent()).click(); // Gọi sự kiện Click, Chỉ cần bắt được sự kiện Click của txtHTML là được
+
+    });
+    function GetContent() {
+      return textEditor.getData().replace(/>[\n\t ]+</g, "><");
+    }
+    function SetContent(htmlContent) {
+      textEditor.setData(htmlContent.replace(/>[\n\t ]+</g, "><"));
+    }
+    function GetText() {
+      return textEditor.editable().getText();
+    }
+  </script>
+</body>
+
+</html>
