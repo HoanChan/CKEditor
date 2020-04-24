@@ -1,7 +1,7 @@
 ﻿var loc = window.location.pathname;
 var dir = "file://" + loc.substring(0, loc.lastIndexOf('/'));
 CKEDITOR.plugins.addExternal('codemirror', dir + '/scripts/ckeditor/plugins/codemirror/', 'plugin.js');
-CKEDITOR.plugins.addExternal('codesnippet', dir + '/scripts/ckeditor/plugins/codesnippet/', 'plugin.js');
+CKEDITOR.plugins.addExternal('textselection', dir + '/scripts/ckeditor/plugins/textselection/', 'plugin.js');
 CKEDITOR.plugins.addExternal('pastebase64', dir + '/scripts/ckeditor/plugins/pastebase64/', 'plugin.js');
 CKEDITOR.plugins.addExternal('base64image', dir + '/scripts/ckeditor/plugins/base64image/', 'plugin.js');
 CKEDITOR.plugins.addExternal('hccode', dir + '/scripts/ckeditor/plugins/hccode/', 'plugin.js');
@@ -14,7 +14,7 @@ var options = {
 	enterMode: CKEDITOR.ENTER_BR,
 	shiftEnterMode: CKEDITOR.ENTER_P,
 	autoParagraph: false,
-	extraPlugins: 'codemirror,mathjax,codesnippet,pastebase64,base64image,hccode',
+	extraPlugins: 'codemirror,mathjax,codesnippet,pastebase64,base64image,textselection,hccode',
 	mathJaxLib: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML',
 	codemirror: {
 		theme: 'rubyblue',
@@ -63,19 +63,17 @@ var options = {
 		{ name: 'clipboard', groups: ['clipboard', 'undo'] },
 		{ name: 'editing', groups: ['find', 'selection', 'spellchecker', 'editing'] },
 		{ name: 'forms', groups: ['forms'] },
-
 		{ name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
 		{ name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi', 'paragraph'] },
 		{ name: 'links', groups: ['links'] },
 		{ name: 'insert', groups: ['insert'] },
-
 		{ name: 'styles', groups: ['styles'] },
 		{ name: 'colors', groups: ['colors'] },
 		{ name: 'tools', groups: ['tools'] },
 		{ name: 'others', groups: ['others'] },
 		{ name: 'about', groups: ['about'] }
 	],
-	removeButtons: 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,Find,Replace,Redo,Undo,SelectAll,Scayt,Form,Checkbox,Radio,TextField,Textarea,Select,Button,ImageButton,HiddenField,Strike,BidiLtr,BidiRtl,Language,Anchor,Flash,Iframe,Image,Styles,Maximize,About'
+	removeButtons: 'Scayt,Form,Save,NewPage,Preview,Print,Templates,Cut,Copy,Undo,Redo,Find,Replace,SelectAll,Checkbox,TextField,Textarea,Select,Radio,Button,ImageButton,HiddenField,Bold,Italic,Underline,BidiLtr,BidiRtl,Language,Anchor,Flash,Image,Iframe,Maximize,About,ShowBlocks'
 };
 function dynamicInputAdd(id, data, remove) {
 	var me = $(id);
