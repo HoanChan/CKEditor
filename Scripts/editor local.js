@@ -1,5 +1,5 @@
 ﻿var loc = window.location.pathname;
-var dir = ""; //"file://" + loc.substring(0, loc.lastIndexOf('/'));
+var dir = "file://" + loc.substring(0, loc.lastIndexOf('/'));
 CKEDITOR.plugins.addExternal('codemirror', dir + '/scripts/ckeditor/plugins/codemirror/', 'plugin.js');
 CKEDITOR.plugins.addExternal('textselection', dir + '/scripts/ckeditor/plugins/textselection/', 'plugin.js');
 CKEDITOR.plugins.addExternal('pastebase64', dir + '/scripts/ckeditor/plugins/pastebase64/', 'plugin.js');
